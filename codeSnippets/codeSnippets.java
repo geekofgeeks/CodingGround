@@ -199,9 +199,8 @@ public class codeSnippets {
 
    public ArrayList<ArrayList<Integer>> combinationSumWithRepeat(int[] arr, int target){
         ArrayList<ArrayList<Integer>> finalResult = new ArrayList<ArrayList<Integer>>();
-        for(int i = 0; i<arr.length; i++){
-            combinationSumWithRepeat(i, arr, target, new ArrayList<Integer>(), finalResult);
-        }
+        combinationSumWithRepeat(0, arr, target, new ArrayList<Integer>(), finalResult);
+        
         return finalResult;
     }
 
