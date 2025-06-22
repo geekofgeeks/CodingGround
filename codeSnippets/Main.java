@@ -344,7 +344,9 @@ public class Main {
 
         // System.out.println(Arrays.toString(codeSnippets.quickSort(arr)));
 
-        System.out.println(codeSnippets.combinationSumWithRepeat(arr, 7));
+        // System.out.println(codeSnippets.combinationSum(arr, 7));
+
+        System.out.println(codeSnippets.subsetSum(arr));
     }
 
 }

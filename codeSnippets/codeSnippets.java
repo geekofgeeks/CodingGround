@@ -197,10 +197,11 @@ public class codeSnippets {
         }
     }
 
-   public ArrayList<ArrayList<Integer>> combinationSumWithRepeat(int[] arr, int target){
+    public ArrayList<ArrayList<Integer>> combinationSum(int[] arr, int target){
         ArrayList<ArrayList<Integer>> finalResult = new ArrayList<ArrayList<Integer>>();
-        combinationSumWithRepeat(0, arr, target, new ArrayList<Integer>(), finalResult);
-        
+        // combinationSumWithRepeat(0, arr, target, new ArrayList<Integer>(), finalResult);
+        combinationSumWithoutRepeat(0, arr, target, new ArrayList<Integer>(), finalResult);
+
         return finalResult;
     }
 
@@ -216,6 +217,37 @@ public class codeSnippets {
             storage.remove(storage.size()-1);
         }
         combinationSumWithRepeat(index+1, arr, target, storage, res);
+    }
+
+      public void combinationSumWithoutRepeat(int index, int[] arr, int target, ArrayList<Integer> storage, ArrayList<ArrayList<Integer>> res){
+        if(index == arr.length){
+            if(target == 0)
+                res.add(new ArrayList<>(storage));
+            return;
+        }
+        if(target >= arr[index]) {
+            storage.add(arr[index]);
+            combinationSumWithoutRepeat(index+1, arr, target-arr[index], storage, res);
+            storage.remove(storage.size()-1);
+        }
+        combinationSumWithoutRepeat(index+1, arr, target, storage, res);
+    }
+
+    public List<Integer> subsetSum(int[] arr){
+        ArrayList<Integer> res = new ArrayList<>();
+        subsetSum(arr, 0, 0, res);
+        return res;    
+    }
+
+    public void subsetSum(int[] arr, int index, int sum, ArrayList<Integer> res){
+        if(index == arr.length){
+            res.add(sum);
+            return;    
+        }
+        sum = sum + arr[index];
+        subsetSum(arr, index+1, sum, res);
+        sum = sum - arr[index];
+        subsetSum(arr, index+1, sum, res);
     }
     
 } 
